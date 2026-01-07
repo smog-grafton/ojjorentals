@@ -1,0 +1,20 @@
+## Error Type
+Runtime ReferenceError
+
+## Error Message
+MenuItem is not defined
+
+
+    at SettingsView (src/views/apps/rentals/settings/SettingsView.tsx:279:18)
+    at SettingsPage (src/app/[lang]/(dashboard)/(private)/apps/rentals/settings/page.tsx:10:10)
+
+## Code Frame
+  277 |                 }}
+  278 |               >
+> 279 |                 <MenuItem value='ssl'>SSL</MenuItem>
+      |                  ^
+  280 |                 <MenuItem value='tls'>TLS</MenuItem>
+  281 |               </TextField>
+  282 |             </Grid>
+
+Next.js version: 16.1.1 (Turbopack)
