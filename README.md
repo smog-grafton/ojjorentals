@@ -1,34 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vinkyaba Rentals Management System
 
-## Getting Started
+A comprehensive rental property management system built with Next.js and Laravel.
 
-First, run the development server:
+## 🚀 Deployment
+
+### Vercel Deployment
+
+This project is configured for deployment on Vercel. Follow these steps:
+
+1. **Connect Repository to Vercel**
+   - Go to [Vercel Dashboard](https://vercel.com)
+   - Click "Add New Project"
+   - Import the repository: `smog-grafton/vinkyabarentals`
+
+2. **Configure Environment Variables**
+   In Vercel project settings, add these environment variables:
+   ```
+   NEXT_PUBLIC_API_URL=https://vkrportal.eavisualarts.org
+   NEXTAUTH_SECRET=olH06diXb7Qf0CORHydGS0A287kdQUZOybPw1hGtS4A=
+   NEXTAUTH_URL=https://your-vercel-domain.vercel.app
+   ```
+
+3. **Deploy**
+   - Vercel will automatically detect Next.js
+   - Build command: `npm run build`
+   - Output directory: `.next`
+   - Install command: `npm install`
+
+### Important Notes
+
+- **Static Export**: This template does NOT support static export. It requires a Node.js server (which Vercel provides).
+- **API Backend**: The Laravel backend is deployed separately at `https://vkrportal.eavisualarts.org`
+- **Environment Variables**: Make sure to set all required environment variables in Vercel dashboard before deploying.
+
+## 🛠️ Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/` - Next.js App Router pages
+- `src/views/` - React components and views
+- `src/components/` - Reusable components
+- `src/services/` - API service layer
+- `src/contexts/` - React contexts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🔗 API Configuration
 
-## Learn More
+The frontend connects to the Laravel API backend. Update `NEXT_PUBLIC_API_URL` in your environment variables to point to your API server.
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Commercial License - All rights reserved
