@@ -109,7 +109,7 @@ const TenantsList = ({ serverMode }: { serverMode: Mode }) => {
       case 'active':
         return 'success'
       case 'moved_out':
-        return 'default'
+        return 'secondary'
       case 'blacklisted':
         return 'error'
       default:

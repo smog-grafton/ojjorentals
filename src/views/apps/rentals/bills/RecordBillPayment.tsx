@@ -85,7 +85,7 @@ const RecordBillPayment = ({ serverMode }: { serverMode: Mode }) => {
         const bill = response.data.find((b: Bill) => b.id === Number(billIdParam))
         if (bill) {
           setSelectedBill(bill)
-          const totalPaid = bill.payments?.reduce((sum, p) => sum + p.amount, 0) || 0
+          const totalPaid = bill.payments?.reduce((sum: number, p: any) => sum + p.amount, 0) || 0
           const outstanding = bill.amount - totalPaid
           setFormData(prev => ({
             ...prev,

@@ -103,7 +103,7 @@ const UnitDetails = ({ unitId, serverMode }: { unitId: string; serverMode: Mode 
       case 'occupied':
         return 'success'
       case 'vacant':
-        return 'default'
+        return 'secondary'
       default:
         return 'warning'
     }

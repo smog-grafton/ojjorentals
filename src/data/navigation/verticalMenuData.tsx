@@ -2,79 +2,81 @@
 import type { VerticalMenuDataType } from '@/types/menuTypes'
 import type { getDictionary } from '@/utils/getDictionary'
 
-const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>): VerticalMenuDataType[] => [
+const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>): VerticalMenuDataType[] => {
+  const nav = dictionary['navigation'] as any
+  return [
   {
-    label: dictionary['navigation'].rentalsDashboard || 'Dashboard',
+    label: nav.rentalsDashboard || 'Dashboard',
     icon: 'ri-home-smile-line',
     href: '/dashboards/rentals'
   },
   {
-    label: dictionary['navigation'].rentalsSystem || 'Rentals System',
+    label: nav.rentalsSystem || 'Rentals System',
     isSection: true,
     children: [
       {
-        label: dictionary['navigation'].tenants,
+        label: nav.tenants,
         icon: 'ri-group-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/tenants/list'
           },
           {
-            label: dictionary['navigation'].addTenant,
+            label: nav.addTenant,
             href: '/apps/rentals/tenants/add'
           }
         ]
       },
       {
-        label: dictionary['navigation'].units,
+        label: nav.units,
         icon: 'ri-building-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/units/list'
           },
           {
-            label: dictionary['navigation'].addUnit,
+            label: nav.addUnit,
             href: '/apps/rentals/units/add'
           }
         ]
       },
       {
-        label: dictionary['navigation'].properties,
+        label: nav.properties,
         icon: 'ri-community-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/properties/list'
           },
           {
-            label: dictionary['navigation'].addProperty,
+            label: nav.addProperty,
             href: '/apps/rentals/properties/add'
           }
         ]
       },
       {
-        label: dictionary['navigation'].invoices,
+        label: nav.invoices,
         icon: 'ri-file-list-3-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/invoices/list'
           },
           {
-            label: dictionary['navigation'].addInvoice,
+            label: nav.addInvoice,
             href: '/apps/rentals/invoices/add'
           }
         ]
       },
       {
-        label: dictionary['navigation'].payments,
+        label: nav.payments,
         icon: 'ri-money-dollar-circle-line',
         href: '/apps/rentals/payments'
       },
       {
-        label: dictionary['navigation'].receipts,
+        label: nav.receipts,
         icon: 'ri-receipt-line',
         href: '/apps/rentals/receipts'
       },
@@ -83,7 +85,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         icon: 'ri-file-list-3-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/bills/list'
           },
           {
@@ -101,7 +103,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         icon: 'ri-money-dollar-circle-line',
         children: [
           {
-            label: dictionary['navigation'].list,
+            label: nav.list,
             href: '/apps/rentals/expenses/list'
           },
           {
@@ -111,42 +113,43 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         ]
       },
       {
-        label: dictionary['navigation'].overdue,
+        label: nav.overdue,
         icon: 'ri-alert-line',
         href: '/apps/rentals/overdue'
       },
       {
-        label: dictionary['navigation'].reminders,
+        label: nav.reminders,
         icon: 'ri-notification-line',
         href: '/apps/rentals/reminders'
       },
       {
-        label: dictionary['navigation'].notifications,
+        label: nav.notifications,
         icon: 'ri-notification-2-line',
         href: '/apps/rentals/notifications'
       },
       {
-        label: dictionary['navigation'].reports,
+        label: nav.reports,
         icon: 'ri-bar-chart-box-line',
         href: '/apps/rentals/reports'
       },
       {
-        label: dictionary['navigation'].settings,
+        label: nav.settings,
         icon: 'ri-settings-3-line',
         href: '/apps/rentals/settings'
       },
       {
-        label: dictionary['navigation'].users || 'Users',
+        label: nav.users || 'Users',
         icon: 'ri-user-3-line',
         href: '/apps/rentals/users/list'
       },
       {
-        label: dictionary['navigation'].roles || 'Roles',
+        label: nav.roles || 'Roles',
         icon: 'ri-shield-user-line',
         href: '/apps/rentals/roles'
       }
     ]
   }
-]
+  ]
+}
 
 export default verticalMenuData

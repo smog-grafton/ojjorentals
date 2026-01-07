@@ -539,7 +539,7 @@ const RemindersView = ({ serverMode }: { serverMode: Mode }) => {
               onInputChange={(event, newInputValue) => {
                 setTenantSearch(newInputValue)
               }}
-              getOptionLabel={(option) => `${option.full_name} - ${option.phone}`}
+              getOptionLabel={(option) => `${option.full_name} - ${(option as any).phone || 'N/A'}`}
               loading={tenantsLoading}
               renderInput={(params) => (
                 <TextField
@@ -565,7 +565,7 @@ const RemindersView = ({ serverMode }: { serverMode: Mode }) => {
                       {option.full_name}
                     </Typography>
                     <Typography variant='caption' color='text.secondary'>
-                      {option.phone} • {option.unit?.unit_number}
+                      {(option as any).phone || 'N/A'} • {(option as any).unit?.unit_number || 'N/A'}
                     </Typography>
                   </div>
                 </li>
@@ -588,7 +588,7 @@ const RemindersView = ({ serverMode }: { serverMode: Mode }) => {
               onInputChange={(event, newInputValue) => {
                 setInvoiceSearch(newInputValue)
               }}
-              getOptionLabel={(option) => `${option.invoice_number} - ${option.tenant?.full_name || 'N/A'}`}
+              getOptionLabel={(option) => `${option.invoice_number} - ${(option as any).tenant?.full_name || 'N/A'}`}
               loading={invoicesLoading}
               disabled={!formData.tenant_id}
               renderInput={(params) => (
@@ -614,7 +614,7 @@ const RemindersView = ({ serverMode }: { serverMode: Mode }) => {
                       {option.invoice_number}
                     </Typography>
                     <Typography variant='caption' color='text.secondary'>
-                      {option.tenant?.full_name} • UGX {option.total_amount.toLocaleString()}
+                      {(option as any).tenant?.full_name || 'N/A'} • UGX {((option as any).total_amount || 0).toLocaleString()}
                     </Typography>
                   </div>
                 </li>

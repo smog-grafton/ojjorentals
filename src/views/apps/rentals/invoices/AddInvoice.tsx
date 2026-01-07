@@ -309,7 +309,7 @@ const AddInvoice = ({ serverMode, tenantId, isFirst }: { serverMode: Mode; tenan
                         {option.full_name}
                       </Typography>
                       <Typography variant='caption' color='text.secondary'>
-                        {option.unit.unit_number} • {option.unit.property.name} • {option.phone}
+                        {option.unit.unit_number} • {option.unit.property.name} • {(option as any).phone}
                       </Typography>
                     </div>
                   </li>

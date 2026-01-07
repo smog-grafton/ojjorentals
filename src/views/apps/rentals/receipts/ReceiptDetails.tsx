@@ -103,6 +103,8 @@ const ReceiptDetails = ({ receiptId, serverMode }: { receiptId: string; serverMo
   }
 
   const handleDownloadPDF = async () => {
+    if (!receipt) return toast.error('Receipt data not available for download.')
+    
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
       const token = localStorage.getItem('token')

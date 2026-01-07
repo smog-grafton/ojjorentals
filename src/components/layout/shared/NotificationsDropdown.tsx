@@ -122,18 +122,27 @@ const NotificationDropdown = () => {
       ? formatDistanceToNow(new Date(notif.created_at), { addSuffix: true })
       : 'Just now'
     
-    return {
-      id: notif.id,
+    // Build notification object based on available data
+    const notification: any = {
+      id: String(notif.id),
       title: data.title || 'Notification',
       subtitle: data.subtitle || '',
       time: timeAgo,
       read: !!notif.read_at,
-      avatarIcon: data.avatar_icon,
       avatarColor: (data.avatar_color || 'primary') as ThemeColor,
-      avatarText: data.avatar_text,
-      avatarImage: data.avatar_image,
       actionUrl: data.action_url,
     }
+    
+    // Only include one avatar type (icon, text, or image)
+    if (data.avatar_image) {
+      notification.avatarImage = data.avatar_image
+    } else if (data.avatar_text) {
+      notification.avatarText = data.avatar_text
+    } else if (data.avatar_icon) {
+      notification.avatarIcon = data.avatar_icon
+    }
+    
+    return notification as NotificationsType
   })
 
   // Vars
@@ -162,7 +171,7 @@ const NotificationDropdown = () => {
     event.stopPropagation()
     const notification = notificationsState[index]
     
-    if (notification && !notification.read && value) {
+    if (notification && !notification.read && value && notification.id) {
       await markAsRead(notification.id)
     }
     
@@ -178,7 +187,7 @@ const NotificationDropdown = () => {
     event.stopPropagation()
     const notification = notificationsState[index]
     
-    if (notification) {
+    if (notification && notification.id) {
       await deleteNotification(notification.id)
     }
   }

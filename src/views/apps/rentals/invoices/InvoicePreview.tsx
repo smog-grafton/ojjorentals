@@ -136,7 +136,7 @@ const InvoicePreview = ({ invoiceId, serverMode }: { invoiceId: string; serverMo
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      link.download = `invoice-${invoice.invoice_number}.pdf`
+      link.download = `invoice-${invoice?.invoice_number || invoiceId}.pdf`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)

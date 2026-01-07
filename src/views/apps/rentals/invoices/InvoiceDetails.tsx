@@ -39,6 +39,7 @@ interface Payment {
     name: string
   }
   receipt: {
+    id: number
     receipt_number: string
   }
 }
@@ -104,6 +105,8 @@ const InvoiceDetails = ({ invoiceId, serverMode }: { invoiceId: string; serverMo
   }
 
   const handleDownloadPDF = async () => {
+    if (!invoice) return toast.error('Invoice data not available for download.')
+    
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
       const token = localStorage.getItem('token')
@@ -157,7 +160,7 @@ const InvoiceDetails = ({ invoiceId, serverMode }: { invoiceId: string; serverMo
     )
   }
 
-  const totalPaid = invoice.payments?.reduce((sum, p) => sum + p.amount, 0) || 0
+  const totalPaid = invoice.payments?.reduce((sum: number, p: Payment) => sum + p.amount, 0) || 0
   const outstanding = invoice.total_amount - totalPaid
   const paymentProgress = (totalPaid / invoice.total_amount) * 100
 

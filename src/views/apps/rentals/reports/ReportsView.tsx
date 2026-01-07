@@ -465,7 +465,7 @@ const ReportsView = ({ serverMode }: { serverMode: Mode }) => {
             fontSize: '15px',
             fontWeight: 500,
             color: 'var(--mui-palette-text-secondary)',
-            formatter: (val: string) => `${parseInt(val, 10)}%`
+            formatter: (val: number) => `${Math.round(val)}%`
           },
           total: {
             show: true,
@@ -942,7 +942,7 @@ const ReportsView = ({ serverMode }: { serverMode: Mode }) => {
                       colors: [donutColors.series1, donutColors.series2, donutColors.series3, donutColors.series4, donutColors.series5],
                       dataLabels: {
                         enabled: true,
-                        formatter: (val: string) => `${parseInt(val, 10)}%`
+                        formatter: (val: number) => `${Math.round(val)}%`
                       },
                       legend: {
                         fontSize: '13px',
@@ -1030,8 +1030,7 @@ const ReportsView = ({ serverMode }: { serverMode: Mode }) => {
                   markers: {
                     size: 5,
                     strokeWidth: 3,
-                    strokeColors: ['#00d4bd'],
-                    fillColors: ['#fff']
+                    strokeColors: ['#00d4bd']
                   },
                   grid: {
                     borderColor: 'var(--mui-palette-divider)',

@@ -203,11 +203,11 @@ const PaymentsView = ({ serverMode }: { serverMode: Mode }) => {
               <Typography variant='caption'>{row.original.receipt.receipt_number}</Typography>
               <IconButton
                 size='small'
-                onClick={() => router.push(`/en/apps/rentals/receipts/details/${row.original.receipt.id}`)}
+                onClick={() => row.original.receipt && router.push(`/en/apps/rentals/receipts/details/${row.original.receipt.id}`)}
               >
                 <i className='ri-eye-line' />
               </IconButton>
-              <IconButton size='small' onClick={() => handleDownloadReceipt(row.original.receipt.id)}>
+              <IconButton size='small' onClick={() => row.original.receipt && handleDownloadReceipt(row.original.receipt.id)}>
                 <i className='ri-file-pdf-line' />
               </IconButton>
             </div>

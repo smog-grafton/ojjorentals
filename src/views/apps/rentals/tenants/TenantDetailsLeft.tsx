@@ -57,7 +57,7 @@ const TenantDetailsLeft = ({ tenant }: { tenant: Tenant }) => {
       case 'active':
         return 'success'
       case 'moved_out':
-        return 'default'
+        return 'secondary'
       case 'blacklisted':
         return 'error'
       default:

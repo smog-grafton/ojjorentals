@@ -184,7 +184,8 @@ const UsersList = ({ serverMode }: { serverMode: Mode }) => {
           </Typography>
         )
       }),
-      columnHelper.accessor('action', {
+      columnHelper.display({
+        id: 'actions',
         header: 'Actions',
         cell: ({ row }) => (
           <div className='flex items-center gap-2'>
@@ -223,7 +224,8 @@ const UsersList = ({ serverMode }: { serverMode: Mode }) => {
               iconButtonProps={{ size: 'small' }}
             />
           </div>
-        )
+        ),
+        enableSorting: false
       })
     ],
     [router]
