@@ -262,7 +262,7 @@ const ReceiptDetails = ({ receiptId, serverMode }: { receiptId: string; serverMo
                   Payment Method
                 </Typography>
                 <Chip
-                  label={receipt.payment.payment_method.replace('_', ' ')}
+                  label={receipt.payment.payment_method === 'iotec' ? 'IoTec' : receipt.payment.payment_method.replace('_', ' ')}
                   color='primary'
                   variant='tonal'
                   className='capitalize'

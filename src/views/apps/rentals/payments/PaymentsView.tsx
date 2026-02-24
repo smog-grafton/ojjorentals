@@ -187,7 +187,15 @@ const PaymentsView = ({ serverMode }: { serverMode: Mode }) => {
       columnHelper.accessor('payment_method', {
         header: 'Method',
         cell: ({ row }) => (
-          <Typography className='capitalize'>{row.original.payment_method.replace('_', ' ')}</Typography>
+          <Typography>
+            {row.original.payment_method === 'iotec'
+              ? 'IoTec'
+              : row.original.payment_method === 'mobile_money'
+                ? 'Mobile Money'
+                : row.original.payment_method === 'bank'
+                  ? 'Bank Transfer'
+                  : 'Cash'}
+          </Typography>
         )
       }),
       columnHelper.accessor('payment_date', {
@@ -310,6 +318,7 @@ const PaymentsView = ({ serverMode }: { serverMode: Mode }) => {
             <MenuItem value='cash'>Cash</MenuItem>
             <MenuItem value='mobile_money'>Mobile Money</MenuItem>
             <MenuItem value='bank'>Bank Transfer</MenuItem>
+            <MenuItem value='iotec'>IoTec</MenuItem>
           </Select>
         </FormControl>
       </div>

@@ -266,6 +266,7 @@ const RecordPayment = ({ serverMode }: { serverMode: Mode }) => {
                   <MenuItem value='cash'>Cash</MenuItem>
                   <MenuItem value='mobile_money'>Mobile Money</MenuItem>
                   <MenuItem value='bank'>Bank Transfer</MenuItem>
+                  <MenuItem value='iotec'>IoTec</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

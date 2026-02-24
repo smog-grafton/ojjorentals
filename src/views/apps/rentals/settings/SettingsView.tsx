@@ -124,7 +124,7 @@ const SettingsView = ({ serverMode }: { serverMode: Mode }) => {
         formData.append('favicon', faviconFile)
       }
       
-      await api.post('/settings', formData, {
+      const response = await api.post('/settings', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -132,21 +132,35 @@ const SettingsView = ({ serverMode }: { serverMode: Mode }) => {
       setSuccess(true)
       toast.success('Settings saved successfully!')
       setTimeout(() => setSuccess(false), 3000)
-      // Refresh settings to get updated paths
-      const response = await api.get('/settings')
-      if (response.data) {
+      // Use POST response so we don't need a second request (avoids 401/network issues after save)
+      const data = response?.data
+      if (data) {
         setSettings(prev => ({
           ...prev,
-          logo_path: response.data.logo_path || '',
-          favicon_path: response.data.favicon_path || ''
+          company_name: data.company_name ?? prev.company_name,
+          company_phone: data.company_phone ?? prev.company_phone,
+          company_email: data.company_email ?? prev.company_email,
+          company_address: data.company_address ?? prev.company_address,
+          invoice_prefix: data.invoice_prefix ?? prev.invoice_prefix,
+          receipt_prefix: data.receipt_prefix ?? prev.receipt_prefix,
+          default_due_days: data.default_due_days ?? prev.default_due_days,
+          penalty_percentage: data.penalty_percentage ?? prev.penalty_percentage,
+          mail_host: data.mail_host ?? prev.mail_host,
+          mail_port: data.mail_port ?? prev.mail_port,
+          mail_username: data.mail_username ?? prev.mail_username,
+          mail_password: data.mail_password ?? prev.mail_password,
+          mail_encryption: data.mail_encryption ?? prev.mail_encryption,
+          mail_from_address: data.mail_from_address ?? prev.mail_from_address,
+          mail_from_name: data.mail_from_name ?? prev.mail_from_name,
+          logo_path: data.logo_path ?? prev.logo_path,
+          favicon_path: data.favicon_path ?? prev.favicon_path
         }))
-        if (response.data.logo_path) {
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
-          setLogoPreview(`${apiUrl}/storage/${response.data.logo_path}`)
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
+        if (data.logo_path) {
+          setLogoPreview(`${apiUrl}/storage/${data.logo_path}`)
         }
-        if (response.data.favicon_path) {
-          const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
-          setFaviconPreview(`${apiUrl}/storage/${response.data.favicon_path}`)
+        if (data.favicon_path) {
+          setFaviconPreview(`${apiUrl}/storage/${data.favicon_path}`)
         }
       }
     } catch (error: any) {
@@ -408,7 +422,7 @@ const SettingsView = ({ serverMode }: { serverMode: Mode }) => {
                 label='From Name'
                 value={settings.mail_from_name}
                 onChange={e => setSettings({ ...settings, mail_from_name: e.target.value })}
-                placeholder='Vinkyaba Rentals'
+                placeholder='Ojjo Properties'
                 helperText='Display name for sent emails'
               />
             </Grid>

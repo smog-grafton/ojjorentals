@@ -173,7 +173,7 @@ const InvoicePreview = ({ invoiceId, serverMode }: { invoiceId: string; serverMo
                         <Logo />
                       </div>
                       <div>
-                        <Typography color='text.primary'>{settings?.company_name || appSettings?.company_name || 'Vinkyaba Rentals'}</Typography>
+                        <Typography color='text.primary'>{settings?.company_name || appSettings?.company_name || 'Ojjo Properties'}</Typography>
                         <Typography color='text.primary'>{settings?.company_address || appSettings?.company_address || ''}</Typography>
                         <Typography color='text.primary'>Tel: {settings?.company_phone || appSettings?.company_phone || ''}</Typography>
                         {(settings?.company_email || appSettings?.company_email) && (

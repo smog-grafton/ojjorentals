@@ -55,7 +55,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
           const publicData = await publicResponse.json()
           // Merge with defaults for basic display
           setSettings({
-            company_name: publicData.company_name || 'Vinkyaba Rentals',
+            company_name: publicData.company_name || 'Ojjo Properties',
             company_phone: '',
             company_address: '',
             invoice_prefix: 'INV',
@@ -71,7 +71,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
         console.error('Error fetching public settings:', publicError)
         // Set defaults if fetch fails
         setSettings({
-          company_name: 'Vinkyaba Rentals',
+          company_name: 'Ojjo Properties',
           company_phone: '',
           company_address: '',
           invoice_prefix: 'INV',
@@ -103,7 +103,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
             const publicData = await publicResponse.json()
             // Merge with defaults for basic display
             setSettings({
-              company_name: publicData.company_name || 'Vinkyaba Rentals',
+              company_name: publicData.company_name || 'Ojjo Properties',
               company_phone: '',
               company_address: '',
               invoice_prefix: 'INV',
@@ -119,7 +119,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
           console.error('Error fetching public settings:', publicError)
           // Set defaults if both fail
           setSettings({
-            company_name: 'Vinkyaba Rentals',
+            company_name: 'Ojjo Properties',
             company_phone: '',
             company_address: '',
             invoice_prefix: 'INV',
@@ -131,7 +131,7 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
       } else {
         // Set defaults if fetch fails for other reasons
         setSettings({
-          company_name: 'Vinkyaba Rentals',
+          company_name: 'Ojjo Properties',
           company_phone: '',
           company_address: '',
           invoice_prefix: 'INV',

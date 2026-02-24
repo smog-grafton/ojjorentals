@@ -349,7 +349,15 @@ const InvoiceDetails = ({ invoiceId, serverMode }: { invoiceId: string; serverMo
                       <TableRow key={payment.id}>
                         <TableCell>{formatDate(payment.payment_date)}</TableCell>
                         <TableCell>{formatCurrency(payment.amount)}</TableCell>
-                        <TableCell className='capitalize'>{payment.payment_method}</TableCell>
+                        <TableCell>
+                          {payment.payment_method === 'iotec'
+                            ? 'IoTec'
+                            : payment.payment_method === 'mobile_money'
+                              ? 'Mobile Money'
+                              : payment.payment_method === 'bank'
+                                ? 'Bank Transfer'
+                                : 'Cash'}
+                        </TableCell>
                         <TableCell>{payment.received_by?.name || 'N/A'}</TableCell>
                         <TableCell>{payment.receipt?.receipt_number || 'N/A'}</TableCell>
                         <TableCell>

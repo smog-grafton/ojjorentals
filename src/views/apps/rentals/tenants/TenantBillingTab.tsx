@@ -168,7 +168,15 @@ const TenantBillingTab = ({ tenant }: { tenant: Tenant }) => {
                         <TableCell>{formatDate(payment.payment_date)}</TableCell>
                         <TableCell>{payment.invoice?.invoice_number || 'N/A'}</TableCell>
                         <TableCell>{formatCurrency(payment.amount)}</TableCell>
-                        <TableCell className='capitalize'>{payment.payment_method}</TableCell>
+                        <TableCell>
+                        {payment.payment_method === 'iotec'
+                          ? 'IoTec'
+                          : payment.payment_method === 'mobile_money'
+                            ? 'Mobile Money'
+                            : payment.payment_method === 'bank'
+                              ? 'Bank Transfer'
+                              : 'Cash'}
+                      </TableCell>
                       </TableRow>
                     ))
                   )}

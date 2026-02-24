@@ -55,7 +55,7 @@ const SendInvoiceDrawer = ({ open, handleClose, invoiceId, tenantEmail }: Props)
         if (response.data && !formData.subject) {
           setFormData(prev => ({
             ...prev,
-            subject: `Invoice - ${response.data.company_name || 'Vinkyaba Rentals'}`,
+            subject: `Invoice - ${response.data.company_name || 'Ojjo Properties'}`,
             message: `Dear Tenant,
 
 Please find attached your invoice for review and payment.
@@ -63,7 +63,7 @@ Please find attached your invoice for review and payment.
 Thank you for your business!
 
 Best regards,
-${response.data.company_name || 'Vinkyaba Rentals'}`
+${response.data.company_name || 'Ojjo Properties'}`
           }))
         }
       } catch (error) {

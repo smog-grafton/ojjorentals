@@ -30,8 +30,8 @@ import '@assets/iconify-icons/generated-icons.css'
 
 // Note: Metadata title will be updated dynamically via SettingsContext
 export const metadata = {
-  title: 'Vinkyaba Rentals - Property Management System',
-  description: 'Vinkyaba Rentals - Property Management System'
+  title: 'Ojjo Properties - Property Management System',
+  description: 'Ojjo Properties - Property Management System'
 }
 
 const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: string }> }) => {

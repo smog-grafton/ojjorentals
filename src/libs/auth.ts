@@ -36,7 +36,8 @@ export const authOptions: NextAuthOptions = {
 
         try {
           // ** Login API Call to match the user credentials and receive user data in response along with his role
-          const res = await fetch(`${process.env.API_URL}/login`, {
+          const apiBase = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000'
+          const res = await fetch(`${apiBase}/api/v1/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -52,11 +53,9 @@ export const authOptions: NextAuthOptions = {
 
           if (res.status === 200) {
             /*
-             * Please unset all the sensitive information of the user either from API response or before returning
-             * user data below. Below return statement will set the user object in the token and the same is set in
-             * the session which will be accessible all over the app.
+             * Laravel returns { token, user }. NextAuth expects the user object.
              */
-            return data
+            return data?.user ?? data
           }
 
           return null

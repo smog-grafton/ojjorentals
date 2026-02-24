@@ -79,9 +79,9 @@ const ShortcutsDropdown = ({ shortcuts: propShortcuts }: { shortcuts?: Shortcuts
   const { settings } = useSettings()
   const { lang: locale } = useParams()
 
-  // Fetch shortcuts from API if not provided
+  // Fetch shortcuts from API if not provided (only when authenticated to avoid 401/network errors on login page)
   useEffect(() => {
-    if (!propShortcuts) {
+    if (!propShortcuts && typeof window !== 'undefined' && localStorage.getItem('token')) {
       const fetchShortcuts = async () => {
         try {
           const response = await api.get('/search/shortcuts')
@@ -93,6 +93,8 @@ const ShortcutsDropdown = ({ shortcuts: propShortcuts }: { shortcuts?: Shortcuts
         }
       }
       fetchShortcuts()
+    } else if (!propShortcuts) {
+      setLoading(false)
     }
   }, [propShortcuts])
 

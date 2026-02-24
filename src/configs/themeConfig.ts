@@ -54,7 +54,7 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  templateName: 'Vinkyaba Rentals',
+  templateName: 'Ojjo Properties',
   homePageUrl: '/dashboards/rentals',
   settingsCookieName: 'vinkyaba-rentals',
   mode: 'system', // 'system', 'light', 'dark'

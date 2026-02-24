@@ -175,8 +175,10 @@ const ReceiptsView = ({ serverMode }: { serverMode: Mode }) => {
       columnHelper.accessor('payment.payment_method', {
         header: 'Method',
         cell: ({ row }) => (
-          <Typography className='capitalize'>
-            {row.original.payment.payment_method.replace('_', ' ')}
+          <Typography>
+            {row.original.payment.payment_method === 'iotec'
+              ? 'IoTec'
+              : row.original.payment.payment_method.replace('_', ' ')}
           </Typography>
         )
       }),

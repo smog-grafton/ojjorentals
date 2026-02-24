@@ -38,7 +38,7 @@ const RentalsOverview = ({ serverMode }: { serverMode: SystemMode }) => {
   const { settings: appSettings } = useSettingsContext()
   
   // Get company name from settings or fallback
-  const companyName = appSettings?.company_name || 'Vinkyaba Rentals'
+  const companyName = appSettings?.company_name || 'Ojjo Properties'
 
   useEffect(() => {
     const fetchData = async () => {
